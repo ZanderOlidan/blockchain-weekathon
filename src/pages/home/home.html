@@ -18,7 +18,31 @@
 
   <h2>Vote</h2>
 
-  <ion-list>
+  <p>
+    Input Contract Address below or create one
+  </p>
+  <ion-input placeholder="0xdca34....." [(ngModel)]="contractAddress" type="text"></ion-input>
+  <button ion-button full (click)="setContractData()" *ngIf="!haveContract">Set</button>
+  <ion-list *ngIf="haveContract">
     <!-- <ion-item *ngFor="let candidate of candidates" (click)=></ion-item> -->
+    
+    <ion-item>
+      Contract Address: {{ contractAddress }}
+    </ion-item>
+    <ion-item>
+      <ion-label>Number of candidates</ion-label>
+      <ion-input [(ngModel)]="numOfCandidates"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Number of voters</ion-label>
+      <ion-input [(ngModel)]="numOfVoters"></ion-input>
+    </ion-item>
+
+    <h2>I will vote for...</h2>
+    <ion-item>
+      <ion-label>Name</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
   </ion-list>
 </ion-content>

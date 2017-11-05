@@ -20,7 +20,7 @@
 
 <ion-content padding>
   <ion-buttons>
-    <button ion-button full *ngIf="addressSet">Go back</button>
+    <button ion-button full *ngIf="addressSet" (click)=goBack()>Go back</button>
   </ion-buttons>
   <p>
     Add candidates for the voting contract.

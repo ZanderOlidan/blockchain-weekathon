@@ -43,7 +43,6 @@ export class CreateContractPage {
     let loading = this.loadingCtrl.create({
       content: 'Please wait while we mine the contract'
     });
-    let contractAddress = this.contractAddress;
 
     loading.present();
 
@@ -62,6 +61,7 @@ export class CreateContractPage {
         if (typeof contract.address !== 'undefined') {
              console.log('Contract mined! address: ' + contract.address + ' transactionHash: ' + contract.transactionHash);
              loading.dismiss();
+             localStorage.setItem('contractAddress', contract.address);
             console.log(contractInstance);
         }
      });
@@ -69,6 +69,7 @@ export class CreateContractPage {
   }
 
   goBack() {
-     this.view.dismiss();
+    this.contractAddress = localStorage.getItem('contractAddress');
+     this.view.dismiss(localStorage.getItem('contractAddress'));
   }
 }
